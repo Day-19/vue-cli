@@ -1,16 +1,42 @@
+<!--  -->
 <template>
-  <div>
-    {{$route.params.name}}
-    
+  <div >
+    <span >
+      {{name}}
+    </span>
   </div>
+
 </template>
-
-<style>
-
-</style>
 
 <script>
 export default {
-  
+
+
+  props:{
+    name:{
+      type:String,
+      default:'Day'
+    }
+  },
+
+  components: {},
+
+  computed: {},
+
+  mounted: {},
+
+  methods: {},
+  mounted () {
+
+  },
+
+  // 向路由二次传值的时候(也就是改变路由传值的触发)
+  beforeRouteUpdate(){
+
+
+  }
 }
+
 </script>
+<style lang='scss' scoped>
+</style>

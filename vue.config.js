@@ -1,5 +1,5 @@
-const BASE_URL = process.env.NODE_ENV === 'procution' ? '/iview-admin/' : '/'
 const path = require('path')
+const BASE_URL = process.env.NODE_ENV === 'procution' ? '/iview-admin/' : '/'
 const resolve = (dir) =>{
   return path.join(__dirname,dir)
 }
@@ -12,7 +12,7 @@ module.exports = {
     .set('_c',resolve('src/components'))
   },
   //打包时不生成.map文件,减少打包体积
-  procutionSourceMap:false,
+  productionSourceMap:false,
   //跨域
   devServer:{
     proxy:'http://localhost:4000'
