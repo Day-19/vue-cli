@@ -1,7 +1,8 @@
 <!--  -->
 <template>
-  <div>
+  <div class="email">
     我是Email页面
+    <button @click="handleClick">按我</button>
   </div>
 </template>
 
@@ -16,11 +17,21 @@ export default {
 
   computed: {},
 
-  mounted: {},
+  mounted () {
+    console.log(this.$bus)
+  },
 
-  methods: {}
+  methods: {
+    handleClick () {
+      this.$bus.$emit('on-click','hello')
+    }
+    
+  }
 }
 
 </script>
-<style lang='scss' scoped>
+<style lang='less' scoped>
+.email{
+  border:1px solid green;
+}
 </style>

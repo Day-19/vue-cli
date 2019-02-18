@@ -42,7 +42,7 @@ export default [{
   },
   {
     path: '/argu/:name',
-    name:'argu', 
+    name:'argu',
     component: () => import('@/views/Argu.vue'),
     props:true
   },
@@ -56,6 +56,10 @@ export default [{
       component: () => import('@/views/Child.vue')
     }]
   },
+  {
+    path:'/store',
+    component: () => import('@/views/Store.vue')
+  },
   //命名路由
   {
     path:'/named_view',
@@ -65,6 +69,7 @@ export default [{
       tel:()=>import('@/views/Tel.vue')
     }
   },
+
   {
     //页面重定向,当网页打开/main时,自动重定向到home页面
     path:'/main',

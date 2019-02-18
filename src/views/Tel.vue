@@ -1,7 +1,8 @@
 <!--  -->
 <template>
-  <div>
+  <div class="tel">
     我是Tel页面
+    <p>{{message}}</p>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 export default {
   data () {
     return {
+      message:''
     };
   },
 
@@ -16,11 +18,18 @@ export default {
 
   computed: {},
 
-  mounted: {},
+  mounted () {
+    this.$bus.$on('on-click',mes => {
+      this.message = mes
+    })
+  },
 
   methods: {}
 }
 
 </script>
-<style lang='scss' scoped>
+<style lang='less' scoped>
+.tel {
+  border:1px solid red;
+}
 </style>

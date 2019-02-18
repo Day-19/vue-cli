@@ -1,6 +1,8 @@
 <!--  -->
 <template>
-  <div>404 page</div>
+  <div>
+    <p>AShow: {{content}}</p>
+  </div>
 </template>
 
 <script>
@@ -9,7 +11,12 @@ export default {
     return {
     };
   },
-
+  props:{
+    content:{
+      type:[String,Number],
+      default:''
+    }
+  },
   components: {},
 
   computed: {},
@@ -18,4 +25,7 @@ export default {
 
   methods: {}
 }
+
 </script>
+<style lang='scss' scoped>
+</style>
