@@ -21,7 +21,11 @@ export default [{
   {
     path:'/login',
     name:'login',
-    component:()=> import('@/views/Login.vue')
+    component:()=> import('@/views/Login.vue'),
+    meta:{
+      //定义每个路由页面的标题栏
+      title:'登录'
+    }
   },
   {
     path: '/about',
@@ -44,6 +48,46 @@ export default [{
     path: '/argu/:name',
     name:'argu',
     component: () => import('@/views/Argu.vue'),
+    props:true
+  },
+  {
+    path: '/count-to',
+    name:'count_to',
+    component: () => import('@/views/Count_To.vue'),
+    props:true
+  },
+  {
+    path: '/layout',
+    name:'layout',
+    component: () => import('@/views/Layout.vue'),
+    props:true,
+    children:[
+      {
+        path:'home',
+        component:Home
+      },
+      {
+        path:'row',
+        component:()=>import('@/views/Row_Col.vue')
+      }
+    ]
+  },
+  {
+    path: '/render-page',
+    name:'render_page',
+    component: () => import('@/views/Render_Page.vue'),
+    props:true
+  },
+  {
+    path: '/split-page',
+    name:'split_page',
+    component: () => import('@/views/Split_Page.vue'),
+    props:true
+  },
+  {
+    path: '/menu-page',
+    name:'mune_page',
+    component: () => import('@/views/Mune_Page.vue'),
     props:true
   },
   {

@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <div id="nav">
+     <!--
+       <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <!-- 命名路由 -->
+       命名路由
       <router-link :to="{ name:'parent' }">parent</router-link>
     </div>
+    -->
 
     <transition-group :name="routerTransition">
-      <router-view key='default'/> <!-- 什么都不写加载default -->
-      <!-- 后面的路由插槽根据name值加载相应组价 -->
+      <!-- // 什么都不写加载default // -->
+      <router-view key='default'/>
+      <!-- // 后面的路由插槽根据name值加载相应组价 // -->
       <router-view key='email' name="email"/>
       <router-view key='tel' name="tel"/>
     </transition-group>
@@ -33,6 +36,12 @@ export default {
 }
 </script>
 <style lang="less">
+html,body {
+  height: 100%;
+}
+body{
+  margin: 0;
+}
 .router-enter{
   opacity: 0;
 }
@@ -55,8 +64,9 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
+  height: 100%;
 }
 #nav {
   padding: 30px;

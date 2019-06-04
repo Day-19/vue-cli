@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './router'
-import {setTitle} from '@/lib/util'
+import store from '@/store'
+import {setTitle,setToken,getToken} from '@/lib/util'
+
 Vue.use(Router)
 
 const router =  new Router({
@@ -10,16 +12,31 @@ const router =  new Router({
   routes
 })
 //全局前置路由守卫(前置钩子)
-const HAS_LOGINED = true //是否登录
+const HAS_LOGINED = false //是否登录
 router.beforeEach((to, from, next) => { //跳转之前的处理
-  // ... to  指的是当前路由对象   from指的是上一个页面的路由对象
+  // ... to  即将要进入的目标 路由对象   from指的是上一个页面的路由对象
+
   to.meta && setTitle(to.meta.title)
-  if(to.name !== 'login'){
-    if(HAS_LOGINED) next()
-    else next({name:'login'})
+  // if(to.name !== 'login'){
+  //   if(HAS_LOGINED) next()
+  //   else next({name:'login'})
+  // }else{
+  //   if(HAS_LOGINED) next({name:'home'})
+  //   else next()
+  // }
+  const token = getToken()
+
+  if(token){ //token是有效的
+    store.dispatch('authorization',token).then(()=>{
+      if(to.name==='login') next({name:'home'})
+      else next()
+    }).catch(err=>{
+      setToken('')
+      next({name:'login'})
+    })
   }else{
-    if(HAS_LOGINED) next({name:'home'})
-    else next()
+    if(to.name ==='login') next()
+    else next({name:'login'})
   }
 })
 // 全局后置钩子
